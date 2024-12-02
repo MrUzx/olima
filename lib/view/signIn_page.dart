@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:document_sent/constants.dart';
 import 'package:document_sent/responsive.dart';
+import 'package:document_sent/view/userhome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:document_sent/widget/custom_elevatedButton.dart';
@@ -45,18 +46,27 @@ class _SigninPageState extends State<SigninPage> {
     try {
       final response = await http.post(url, headers: headers, body: body);
       print('Status kod: ${response.statusCode}');
-      print('Javob: ${response.body}'); // Serverdan qaytgan ma'lumotni ko'rsatish
+      print(
+          'Javob: ${response.body}'); // Serverdan qaytgan ma'lumotni ko'rsatish
 
       if (response.statusCode == 200) {
         final responseData = jsonDecode(response.body);
 
         if (responseData['data']['items'].isNotEmpty) {
           Get.snackbar('Hush kelibsiz', 'Foydalanuvchi Topildi');
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => UserHomePage(),
+            ),
+          );
         } else {
           Get.snackbar('Muvaffaqiyatsiz', 'Foydalanuvchi Topilmadi');
+
         }
       } else {
-        Get.snackbar('Xatolik', 'Serverdan noto‘g‘ri javob: ${response.statusCode}');
+        Get.snackbar(
+            'Xatolik', 'Serverdan noto‘g‘ri javob: ${response.statusCode}');
       }
     } catch (e) {
       print('Xato yuz berdi: $e');
@@ -76,7 +86,10 @@ class _SigninPageState extends State<SigninPage> {
           Expanded(
             flex: 4,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal:  !Responsive.isMobile(context)? defaultPadding*3 : defaultPadding*2),
+              padding: EdgeInsets.symmetric(
+                  horizontal: !Responsive.isMobile(context)
+                      ? defaultPadding * 3
+                      : defaultPadding * 2),
               color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -86,9 +99,7 @@ class _SigninPageState extends State<SigninPage> {
                     'SIGN IN',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                          color: primaryColor,
-                      fontWeight: FontWeight.w600
-                        ),
+                        color: primaryColor, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 20),
                   CustomTextField(
@@ -125,7 +136,7 @@ class _SigninPageState extends State<SigninPage> {
               child: Container(
                 height: double.infinity,
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: defaultPadding*4),
+                padding: EdgeInsets.symmetric(vertical: defaultPadding * 4),
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/background.png"),
@@ -134,7 +145,7 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 child: Center(
                   child: Container(
-                    padding: EdgeInsets.all(defaultPadding*5),
+                    padding: EdgeInsets.all(defaultPadding * 5),
                     decoration: ShapeDecoration(
                       color: Colors.white.withOpacity(0.21),
                       shape: RoundedRectangleBorder(
@@ -142,8 +153,8 @@ class _SigninPageState extends State<SigninPage> {
                           width: 1.5,
                           color: Colors.white.withOpacity(0.52),
                         ),
-                        borderRadius: BorderRadius.circular(
-                            25), // Responsiv borderRadius
+                        borderRadius:
+                            BorderRadius.circular(25), // Responsiv borderRadius
                       ),
                     ),
                     child: Image.asset(
