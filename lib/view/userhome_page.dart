@@ -108,41 +108,6 @@ class _UserHomePageState extends State<UserHomePage> {
     );
   }
 
-  // Widget _buildItem(Category category) {
-  //   return GestureDetector(
-  //     onTap: (){
-  //       print(category.nomi);
-  //     },
-  //     child: Container(
-  //       padding: const EdgeInsets.all(defaultPadding),
-  //       decoration: BoxDecoration(
-  //         color: primaryColor,
-  //         borderRadius: BorderRadius.circular(15),
-  //         boxShadow: [
-  //           const BoxShadow(
-  //             color: Colors.black26,
-  //             blurRadius: 6,
-  //             offset: Offset(4, 4),
-  //           ),
-  //         ],
-  //       ),
-  //       child: Center(
-  //         child: Text(
-  //           category.nomi,
-  //           style: !Responsive.isMobile(context)
-  //               ? Theme.of(context).textTheme.titleMedium?.copyWith(
-  //                     color: Colors.white,
-  //                   )
-  //               : Theme.of(context).textTheme.bodyMedium?.copyWith(
-  //                     color: Colors.white,
-  //                   ),
-  //           textAlign: TextAlign.center,
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   Widget _buildItem(Category category) {
     return GestureDetector(
       onTap: () {
