@@ -182,7 +182,7 @@ class _UserHomePageState extends State<UserHomePage> {
             ),
           ),
           if (category.status == 0)
-            //xira qilish va qulflash uchun
+            //xira qilish va qulflash uchunlll
             Container(
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.5),
