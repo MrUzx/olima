@@ -1,5 +1,4 @@
 import 'package:document_sent/view/signIn_page.dart';
-import 'package:document_sent/view/userhome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: UserHomePage(),
+      home: SigninPage(),
     );
   }
 }
